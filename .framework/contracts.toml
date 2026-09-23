@@ -1,0 +1,83 @@
+# Core-V1 consolidated logical contracts.
+# Input/output arrays are allowlists, not required bundles.
+# Access policies describe logical ArtifactSubtype operations. Codex does not
+# automatically enforce these rules at ArtifactSubtype granularity; role
+# instructions and the runtime sandbox provide only the enforcement they support.
+# HandoffStatus values below are a PSM Core-V1 decision; the current PIM leaves
+# their canonical domain definition open.
+
+[enums]
+artifact_subtypes = [
+  "Specification",
+  "Codebase",
+  "SystemMap",
+  "TechnicalPlan",
+  "ChangeSet",
+  "TestSuite",
+  "TaskList",
+  "SecurityReport",
+  "ExecutionTrace",
+]
+handoff_intents = [
+  "DELEGATE_TASK",
+  "PROVIDE_RESULT",
+  "PROVIDE_FEEDBACK",
+  "ESCALATE",
+  "REQUEST_INFO",
+  "REQUEST_APPROVAL",
+]
+handoff_statuses = ["PENDING", "ACCEPTED", "REJECTED", "COMPLETED", "FAILED"]
+
+[io_contracts.decomposer]
+input = []
+output = ["Specification", "TaskList"]
+
+[io_contracts.explorer]
+input = ["Codebase", "Specification"]
+output = ["SystemMap"]
+
+[io_contracts.architect]
+input = ["Specification", "TaskList", "SystemMap"]
+output = ["TechnicalPlan"]
+
+[io_contracts.implementer]
+input = ["Specification", "TechnicalPlan", "SystemMap", "ExecutionTrace"]
+output = ["ChangeSet", "TestSuite"]
+
+[io_contracts.verifier]
+input = ["Specification", "Codebase", "ChangeSet", "TestSuite"]
+output = ["ExecutionTrace"]
+
+[io_contracts.security_auditor]
+input = ["Specification", "Codebase", "ChangeSet", "TestSuite", "ExecutionTrace"]
+output = ["SecurityReport"]
+
+[access_policies.decomposer]
+read = ["Specification"]
+create = ["Specification", "TaskList"]
+write = []
+
+[access_policies.explorer]
+read = ["Codebase", "Specification"]
+create = ["SystemMap"]
+write = []
+
+[access_policies.architect]
+read = ["Specification", "TaskList", "SystemMap", "Codebase"]
+create = ["TechnicalPlan"]
+write = []
+
+[access_policies.implementer]
+read = ["Specification", "TechnicalPlan", "SystemMap", "Codebase", "TestSuite", "ExecutionTrace"]
+create = ["ChangeSet", "TestSuite"]
+write = ["Codebase", "TestSuite"]
+
+[access_policies.verifier]
+read = ["Specification", "Codebase", "ChangeSet", "TestSuite"]
+create = ["ExecutionTrace"]
+write = []
+
+[access_policies.security_auditor]
+read = ["Specification", "Codebase", "ChangeSet", "TestSuite", "ExecutionTrace"]
+create = ["SecurityReport"]
+write = []
