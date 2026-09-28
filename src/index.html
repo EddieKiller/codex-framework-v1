@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis tareas</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main class="contenedor">
+    <header>
+      <p class="eyebrow">Organización personal</p>
+      <h1>Mis tareas</h1>
+      <p>Una lista sencilla para avanzar en lo importante.</p>
+    </header>
+
+    <section aria-labelledby="nueva-tarea">
+      <h2 id="nueva-tarea">Añadir una tarea</h2>
+      <form id="task-form" novalidate>
+        <label for="task-title">Título de la tarea</label>
+        <div class="form-row">
+          <input id="task-title" name="title" type="text" autocomplete="off" required>
+          <button type="submit">Añadir tarea</button>
+        </div>
+        <label class="checkbox-label"><input id="task-recurrent" name="recurrent" type="checkbox"> Recurrente diariamente</label>
+        <p id="form-message" class="message" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section aria-labelledby="lista-tareas">
+      <div class="section-heading">
+        <h2 id="lista-tareas">Lista de tareas</h2>
+        <span id="task-count" aria-live="polite"></span>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar tareas">
+        <button type="button" data-filter="all" class="filter active" aria-pressed="true">Todas</button>
+        <button type="button" data-filter="pending" class="filter" aria-pressed="false">Pendientes</button>
+        <button type="button" data-filter="completed" class="filter" aria-pressed="false">Completadas</button>
+      </div>
+      <p id="storage-warning" class="warning" role="status" hidden>El almacenamiento no está disponible. Tus cambios se conservarán sólo durante esta sesión.</p>
+      <ul id="task-list" class="task-list" aria-live="polite"></ul>
+      <p id="empty-state" class="empty-state">Aún no tienes tareas. ¡Añade la primera!</p>
+    </section>
+  </main>
+</body>
+</html>

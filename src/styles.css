@@ -1,0 +1,36 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #172033; background: #f4f6fb; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.contenedor { max-width: 760px; margin: 0 auto; padding: 3rem 1.25rem; }
+header { margin-bottom: 2rem; }
+.eyebrow { color: #536dfe; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
+h1 { margin: .25rem 0; font-size: clamp(2rem, 6vw, 3.2rem); }
+h2 { font-size: 1.25rem; }
+section { background: white; border: 1px solid #dce2ef; border-radius: 14px; padding: 1.25rem; margin-top: 1rem; box-shadow: 0 6px 20px #1720330d; }
+label { display: block; font-weight: 650; margin-bottom: .45rem; }
+.checkbox-label { display: flex; align-items: center; gap: .45rem; margin-top: .75rem; font-weight: 500; }
+.checkbox-label input { width: auto; }
+.form-row { display: flex; gap: .65rem; }
+input { width: 100%; border: 2px solid #b9c3d8; border-radius: 8px; padding: .7rem .8rem; font: inherit; }
+input:focus, button:focus-visible { outline: 3px solid #aebcff; outline-offset: 2px; }
+button { border: 0; border-radius: 8px; padding: .7rem .9rem; font: inherit; font-weight: 650; color: white; background: #3349c8; cursor: pointer; white-space: nowrap; }
+button:hover { background: #2639a9; }
+.filter { color: #3349c8; background: #eef1ff; }
+.filter.active { color: white; background: #3349c8; }
+.section-heading, .filters { display: flex; align-items: center; gap: .6rem; }
+.section-heading { justify-content: space-between; }
+.filters { flex-wrap: wrap; margin-bottom: 1rem; }
+.task-list { list-style: none; padding: 0; margin: 0; }
+.task { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .75rem; border-top: 1px solid #e3e7f0; padding: .9rem 0; }
+.task.completed .task-title { color: #65708a; text-decoration: line-through; }
+.task-title { overflow-wrap: anywhere; }
+.recurring-label { display: inline-block; color: #536dfe; font-size: .78rem; font-weight: 650; text-decoration: none; }
+.task-actions { display: flex; gap: .4rem; }
+.task-actions button { font-size: .85rem; padding: .45rem .6rem; }
+.task-actions .danger { color: #b42318; background: #fff0ee; }
+.task-edit { display: flex; gap: .4rem; }
+.task-edit input { padding: .45rem .55rem; }
+.message { min-height: 1.3rem; color: #b42318; margin: .5rem 0 0; }
+.warning { color: #704f00; background: #fff6d8; border-radius: 8px; padding: .75rem; }
+.empty-state { color: #65708a; text-align: center; padding: 1.5rem; }
+@media (max-width: 560px) { .form-row, .task { grid-template-columns: 1fr; display: flex; flex-wrap: wrap; } .form-row button { width: 100%; } .task-actions { margin-left: 2rem; } }

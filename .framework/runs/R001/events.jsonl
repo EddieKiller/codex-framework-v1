@@ -1,0 +1,1 @@
+{"event":"RUN_STARTED","run_id":"R001","feature_id":"F001","status":"ACTIVE","logicalProducer":"orchestrator","physicalDispatcher":"orchestrator","consumer":"development_team","business_intent":"Crear un sitio web MVP para gestionar una lista personal de tareas."}

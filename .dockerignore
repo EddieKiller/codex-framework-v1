@@ -1,0 +1,12 @@
+.git
+.framework
+.codex
+.venv
+specs
+node_modules
+test-results
+playwright-report
+.env*
+*.md
+*.pem
+*.key
